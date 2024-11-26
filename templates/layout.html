@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App - CRUD Operations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .navbar {
+        background-color: #343a40;
+        color: #fff;
+        padding: 1rem 2rem;
+      }
+      .navbar-brand {
+        font-size: 1.75rem;
+        font-weight: bold;
+      }
+      .container {
+        margin-top: 2.5rem;
+        max-width: 1080px;
+      }
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      .footer-text {
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="navbar-brand" href="/"><i class="fas fa-music mr-2"></i>Music Collection</a>
+    </nav>
+    <div class="container">
+      {% block body %}
+      {% endblock %}
+    </div>
+    <footer>
+      <p class="footer-text">&copy; 2024 Music App | Built with <i class="fas fa-heart text-danger"></i> by Hell Spawn</p>
+    </footer>
+    <script>
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', e => {
+          if (!confirm('Are you sure?')) e.preventDefault();
+        });
+      });
+      $(document).ready(() => {
+        $('#example').DataTable({
+          lengthMenu: [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+          pageLength: 3
+        });
+      });
+    </script>
+  </body>
+</html>
+
